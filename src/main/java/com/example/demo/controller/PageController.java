@@ -36,14 +36,22 @@ public class PageController {
 	}
 	
 	@RequestMapping("/perkalian")
-	public String doperkalian(@RequestParam(value = "a",required=false, defaultValue = "0") Integer a,
-			@RequestParam(value = "b",required=false, defaultValue = "0") Integer b, Model model) {
-		System.out.println(a);
-		model.addAttribute("a​", a);
-		model.addAttribute("b​", b);
+	public String Perkalian(
+			@RequestParam(value="a", required=false) Integer a, 
+			@RequestParam(value="b", required=false) Integer b, 
+			Model model) {
+		System.out.println(b);
 		
-		Integer hasil = a *b;
-		model.addAttribute("hasilperkalian", hasil);
+		if (a==null)
+		{
+			a = 0;
+		}
+		if (b==null)
+		{
+			b = 0;
+		}
+		 Integer hasil = a*b;
+		model.addAttribute("hasilperkalian", a + " X " + b + " = " +hasil);
 		System.out.println(model);
 	return "perkalian";
 	
